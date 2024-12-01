@@ -29,3 +29,15 @@ make e2e
 # test coverage
 make test-cov
 ```
+
+### Lint
+
+```sh
+make lint
+```
+
+## Type check
+
+```sh
+make type-check
+```

@@ -20,7 +20,7 @@ lint:
 	yarn lint
 
 type-check:
-	yarn type-check
+	yarn tsc --noEmit
 
 audit:
 	yarn audit
