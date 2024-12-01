@@ -1,10 +1,10 @@
-## Project setup
+## ⚙️ Project setup
 
 ```bash
 make install
 ```
 
-## Compile and run the project
+## 🔥 Compile and run the project
 
 ```bash
 # development
@@ -17,7 +17,7 @@ make start-dev
 make start-prod
 ```
 
-## Run tests
+## ✅ Run tests
 
 ```bash
 # unit tests
@@ -30,13 +30,13 @@ make e2e
 make test-cov
 ```
 
-### Lint
+## 🧐 Lint
 
 ```sh
 make lint
 ```
 
-## Type check
+## 🎏 Type check
 
 ```sh
 make type-check
