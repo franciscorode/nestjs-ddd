@@ -46,7 +46,7 @@ build:
 	rm -rf src/dist
 	yarn run build
 
-test:
+test-unit:
 	yarn run test
 
 test-cov:
