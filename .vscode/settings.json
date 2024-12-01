@@ -1,0 +1,39 @@
+{
+  // Lint
+  "eslint.validate": ["typescript"],
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
+  },
+  // Format
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Git
+  "git.inputValidationSubjectLength": 72,
+
+  // Gitmoji
+  "gitmoji.onlyUseCustomEmoji": true,
+  "gitmoji.addCustomEmoji": [
+    { "emoji": "🐛 fix:", "description": "Bug fix" },
+    { "emoji": "✨ feat:", "description": "New feature" },
+    { "emoji": "🔧 chore:", "description": "No production change" },
+    { "emoji": "👷 ci:", "description": "CI changes" },
+    { "emoji": "📝 docs:", "description": "Documentation changes" },
+    {
+      "emoji": "📦 build:",
+      "description": "Build system or external dependencies changes"
+    },
+    {
+      "emoji": "🧑‍🎨 style:",
+      "description": "Changes that do not affect the meaning of the code"
+    },
+    {
+      "emoji": "♻️ refactor:",
+      "description": "Changes that neither fixes bugs nor add features"
+    },
+    { "emoji": "⚡ perf:", "description": "Changes that improves performance" },
+    { "emoji": "✅ test:", "description": "Changes or test additions" }
+  ]
+}
