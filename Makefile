@@ -19,6 +19,9 @@ install:
 lint:
 	yarn lint
 
+format:
+	yarn format
+
 type-check:
 	yarn tsc --noEmit
 
