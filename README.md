@@ -1,31 +1,31 @@
 ## Project setup
 
 ```bash
-yarn install
+make install
 ```
 
 ## Compile and run the project
 
 ```bash
 # development
-yarn run start
+make start
 
 # watch mode
-yarn run start:dev
+make start-dev
 
 # production mode
-yarn run start:prod
+make start-prod
 ```
 
 ## Run tests
 
 ```bash
 # unit tests
-yarn run test
+make test
 
 # e2e tests
-yarn run test:e2e
+make e2e
 
 # test coverage
-yarn run test:cov
+make test-cov
 ```
