@@ -50,7 +50,7 @@ build:
 	yarn run build
 
 test-unit:
-	yarn run test
+	yarn run test:unit
 
 test-cov:
 	yarn run test:cov
