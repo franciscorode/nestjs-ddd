@@ -29,7 +29,7 @@ audit:
 	yarn audit
 
 clean:
-	rm -rf src/dist
+	rm -rf dist
 	rm -rf coverage
 	rm -rf src/coverage
 	rm -rf yarn-error.log
