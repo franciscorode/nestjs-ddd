@@ -5,7 +5,7 @@ import { UserModule } from '@src/user/user.module';
 import { User } from '@src/user/domain/user.entity';
 import { UserMother } from '../mothers/user.mother';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getTestTypeOrmConfig } from '../../typeorm-test.config';
+import { getTestTypeOrmConfig } from '../../config/typeorm-test.config';
 import { DataSource } from 'typeorm';
 import { UserModel } from '@src/user/infrastructure/user.model';
 
