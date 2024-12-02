@@ -1,18 +1,18 @@
+import { ConflictException } from '@nestjs/common';
 import { User } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
 
 export class InMemoryUserRepository implements UserRepository {
   private users: User[] = [];
   async create(user: User): Promise<User> {
+    const existUser = this.users.some((u) => u.uuid === user.uuid);
+    if (existUser) {
+      throw new ConflictException('A user with the same UUID already exists.');
+    }
     this.users.push(user);
     return user;
   }
   async retrieveAll(): Promise<Array<User>> {
-    return [
-      new User({
-        name: 'John Doe',
-        uuid: '123e4567-e89b-12d3-a456-426614174000',
-      }),
-    ];
+    return this.users;
   }
 }

@@ -55,10 +55,13 @@ build:
 test-unit:
 	yarn run test:unit
 
+test-integration:
+	yarn run test:integration
+
 test-cov:
 	yarn run test:cov
 
-e2e:
+test-e2e:
 	yarn run test:e2e
 
 upgrade-deps:

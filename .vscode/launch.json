@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Nest Test",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "test:e2e"],
+      "runtimeArgs": ["run", "test:integration"],
       "console": "integratedTerminal",
       "restart": true,
       "autoAttachChildProcesses": true,
