@@ -13,7 +13,7 @@ describe('User router (e2e)', () => {
   let app: INestApplication;
   let dataSource: DataSource;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [TypeOrmModule.forRoot(getTestTypeOrmConfig()), UserModule],
     }).compile();
