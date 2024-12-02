@@ -41,8 +41,11 @@ jobs:
       - name: 🐋 Start environment
         run: make up && make wait-postgres
 
-      - name: ✅ Tests
+      - name: ✅ Unit tests
         run: make test-unit
 
+      - name: 🔌 Integration tests
+        run: make test-integration
+
       - name: 👤 End2end tests
-        run: make e2e
+        run: make test-e2e
