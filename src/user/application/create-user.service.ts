@@ -8,6 +8,6 @@ export class CreateUserService {
     @Inject('UserRepository') private readonly userRepository: UserRepository,
   ) {}
   async execute(user: User): Promise<User> {
-    return this.userRepository.create(user);
+    return await this.userRepository.create(user);
   }
 }

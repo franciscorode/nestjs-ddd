@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres:13.3
+    restart: always
+    environment:
+      DATABASE_NAME: ${DATABASE_NAME}
+      POSTGRES_DB: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - '${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}'
+    volumes:
+      - vol_postgres:/var/lib/postgresql/data
+      - ./docker/psql_dump.sql:/docker-entrypoint-initdb.d/psql_dump.sql
+    shm_size: '128mb'
+
+volumes:
+  vol_postgres:
+    driver: local
