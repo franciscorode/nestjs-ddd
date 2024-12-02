@@ -14,7 +14,7 @@ env:
   DATABASE_USER: root
   DATABASE_PASSWORD: root
   DATABASE_NAME: nestjs-ddd
-  PGPASSWORD: root
+  POSTGRES_PASSWORD: root
 
 jobs:
   build:
