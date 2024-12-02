@@ -59,7 +59,7 @@ test-cov:
 	yarn run test:cov
 
 e2e:
-	yarn run test:e2e
+	nestjs-ddd-postgres-1; yarn run test:e2e
 
 upgrade-deps:
 	yarn upgrade
