@@ -1,6 +1,11 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { User } from '../domain/user.entity';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiConflictResponse,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UserDto } from './user.dto';
 import { CreateUserService } from '../application/create-user.service';
 import { GetUsersService } from '../application/get-users.service';
@@ -20,6 +25,7 @@ export class UsersController {
   }
   @Post()
   @ApiCreatedResponse({ type: User, description: 'Create a new user' })
+  @ApiConflictResponse({ description: 'Conflict: User already exists.' })
   async create(@Body() userDto: UserDto): Promise<User> {
     return await this.createUserService.execute(userDto.toDomain());
   }
