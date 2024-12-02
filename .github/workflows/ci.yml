@@ -8,6 +8,14 @@ on:
     paths-ignore:
       - '**.md'
 
+env:
+  DATABASE_HOST: localhost
+  DATABASE_PORT: 5432
+  DATABASE_USER: root
+  DATABASE_PASSWORD: root
+  DATABASE_NAME: nestjs-ddd
+  POSTGRES_PASSWORD: root
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -29,6 +37,9 @@ jobs:
 
       - name: 🎏 Type check
         run: make type-check
+
+      - name: 🐋 Start environment
+        run: make up && make wait-postgres
 
       - name: ✅ Tests
         run: make test-unit

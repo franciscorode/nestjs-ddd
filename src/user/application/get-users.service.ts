@@ -8,6 +8,6 @@ export class GetUsersService {
     @Inject('UserRepository') private readonly userRepository: UserRepository,
   ) {}
   async execute(): Promise<Array<User>> {
-    return this.userRepository.retrieveAll();
+    return await this.userRepository.retrieveAll();
   }
 }

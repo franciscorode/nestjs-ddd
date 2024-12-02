@@ -16,11 +16,11 @@ export class UsersController {
   @Get()
   @ApiOkResponse({ type: [UserDto], description: 'Retrieve all users' })
   async findAll(): Promise<Array<User>> {
-    return this.getUsersService.execute();
+    return await this.getUsersService.execute();
   }
   @Post()
   @ApiCreatedResponse({ type: User, description: 'Create a new user' })
   async create(@Body() userDto: UserDto): Promise<User> {
-    return this.createUserService.execute(userDto.toDomain());
+    return await this.createUserService.execute(userDto.toDomain());
   }
 }
