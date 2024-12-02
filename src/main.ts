@@ -13,7 +13,6 @@ async function bootstrap() {
     .setTitle('Nestjs-ddd')
     .setDescription('The nestjs-ddd API')
     .setVersion('1.0')
-    .addTag('nestjs-ddd')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory);
