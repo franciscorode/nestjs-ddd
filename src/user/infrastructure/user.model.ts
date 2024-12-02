@@ -12,13 +12,21 @@ export class UserModel {
   @Column()
   name: string;
 
+  @Column()
+  password: string;
+
   to_domain(): User {
-    return new User({ uuid: this.uuid, name: this.name });
+    return new User({
+      uuid: this.uuid,
+      name: this.name,
+      password: this.password,
+    });
   }
   static from_domain(user: User): UserModel {
     const userModel = new UserModel();
     userModel.uuid = user.uuid;
     userModel.name = user.name;
+    userModel.password = user.password;
     return userModel;
   }
 }

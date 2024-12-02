@@ -1,4 +1,9 @@
-import { ConflictException, Inject, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { User } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
 import { Repository } from 'typeorm';
@@ -26,5 +31,15 @@ export class SqlUserRepository implements UserRepository {
   async retrieveAll(): Promise<Array<User>> {
     const userModels = await this.userRepository.find();
     return userModels.map((userModel) => userModel.to_domain());
+  }
+
+  async retrieve_by_name(name: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { name: name },
+    });
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+    return user.to_domain();
   }
 }
