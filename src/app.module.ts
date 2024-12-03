@@ -3,6 +3,8 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModel } from './user/infrastructure/user.model';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { RabbitMqDomainEventBus } from './user/shared/infrastructure/rabbitmq-domain-event.bus';
 
 @Module({
   imports: [
@@ -24,8 +26,21 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         synchronize: true, // Set to false in production
       }),
     }),
+    ClientsModule.register([
+      {
+        name: 'EVENT_BUS',
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'], // RabbitMQ URL
+          queue: 'events',
+          queueOptions: {
+            durable: true,
+          },
+        },
+      },
+    ]),
   ],
   controllers: [],
-  providers: [],
+  providers: [RabbitMqDomainEventBus],
 })
 export class AppModule {}

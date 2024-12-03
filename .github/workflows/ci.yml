@@ -39,7 +39,7 @@ jobs:
         run: make type-check
 
       - name: 🐋 Start environment
-        run: make up && make wait-postgres
+        run: make up && make wait-postgres && make wait-rabbitmq
 
       - name: ✅ Unit tests
         run: make test-unit

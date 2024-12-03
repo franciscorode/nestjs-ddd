@@ -71,6 +71,9 @@ upgrade-deps:
 wait-postgres:
 	while ! curl http://localhost:5432/ 2>&1 | grep -q '52'; do sleep 1; done;
 
+wait-rabbitmq:
+	while ! curl -s localhost:15672 > /dev/null; do sleep 1; done;
+
 up:
 	docker compose up --build -d
 

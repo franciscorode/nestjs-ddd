@@ -9,9 +9,27 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SqlUserRepository } from './infrastructure/sql-user.repository';
 import { DataSource } from 'typeorm';
 import { InMemoryDomainEventBus } from './shared/infrastructure/inmemory-domain-event.bus';
+import { ClientProxy, ClientsModule, Transport } from '@nestjs/microservices';
+import { RabbitMqDomainEventBus } from './shared/infrastructure/rabbitmq-domain-event.bus';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserModel]), ConfigModule],
+  imports: [
+    TypeOrmModule.forFeature([UserModel]),
+    ConfigModule,
+    ClientsModule.register([
+      {
+        name: 'EVENT_BUS', // Registering the ClientProxy with a name
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'events',
+          queueOptions: {
+            durable: true,
+          },
+        },
+      },
+    ]),
+  ],
   providers: [
     CreateUserService,
     GetUsersService,
@@ -31,9 +49,14 @@ import { InMemoryDomainEventBus } from './shared/infrastructure/inmemory-domain-
     },
     {
       provide: 'DomainEventBus',
-      useFactory: () => {
-        return new InMemoryDomainEventBus();
+      useFactory: (configService: ConfigService, clientProxy: ClientProxy) => {
+        const useMockBus = configService.get<boolean>('USE_MOCK_BUSES', false);
+        if (useMockBus) {
+          return new InMemoryDomainEventBus();
+        }
+        return new RabbitMqDomainEventBus(clientProxy);
       },
+      inject: [ConfigService, 'EVENT_BUS'],
     },
   ],
   controllers: [UsersController],
