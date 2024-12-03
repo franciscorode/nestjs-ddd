@@ -8,6 +8,7 @@ import { UserModel } from './infrastructure/user.model';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SqlUserRepository } from './infrastructure/sql-user.repository';
 import { DataSource } from 'typeorm';
+import { InMemoryDomainEventBus } from './shared/infrastructure/inmemory-domain-event.bus';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserModel]), ConfigModule],
@@ -27,6 +28,12 @@ import { DataSource } from 'typeorm';
         return new SqlUserRepository(dataSource.getRepository(UserModel));
       },
       inject: [ConfigService, DataSource],
+    },
+    {
+      provide: 'DomainEventBus',
+      useFactory: () => {
+        return new InMemoryDomainEventBus();
+      },
     },
   ],
   controllers: [UsersController],
