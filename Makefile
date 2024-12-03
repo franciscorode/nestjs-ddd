@@ -76,3 +76,13 @@ up:
 
 down:
 	docker compose down
+
+###############################
+### DB MIGRATIONS MANAGEMENT ##
+###############################
+
+create-migration:
+	npm run migration:generate --name="$(m)"
+
+run-migrations:
+	npm run migration:run
