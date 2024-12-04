@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
+
 import { User } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
-import { DomainEventBus } from '../shared/domain/domain-event.bus';
 import { UserCreated } from '../domain/user-created.event';
+import { DomainEventBus } from '../shared/domain/domain-event.bus';
 
 @Injectable()
 export class CreateUserService {

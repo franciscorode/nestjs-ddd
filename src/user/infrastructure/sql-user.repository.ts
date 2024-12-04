@@ -1,7 +1,8 @@
 import { ConflictException, Inject, Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
 import { User } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
-import { Repository } from 'typeorm';
 import { UserModel } from './user.model';
 
 @Injectable()
