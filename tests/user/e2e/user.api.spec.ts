@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getTestTypeOrmConfig } from '../../config/typeorm-test.config';
 import { DataSource } from 'typeorm';
 import { UserModel } from '@src/user/infrastructure/user.model';
+import { SharedModule } from '@src/app.container';
 
 describe('User router (e2e)', () => {
   let app: INestApplication;
@@ -15,7 +16,11 @@ describe('User router (e2e)', () => {
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [TypeOrmModule.forRoot(getTestTypeOrmConfig()), UserModule],
+      imports: [
+        TypeOrmModule.forRoot(getTestTypeOrmConfig()),
+        SharedModule,
+        UserModule,
+      ],
     }).compile();
 
     app = moduleFixture.createNestApplication();

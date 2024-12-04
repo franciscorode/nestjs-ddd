@@ -13,6 +13,7 @@ import { UserModel } from '@src/user/infrastructure/user.model';
 import { UserRepository } from '@src/user/domain/user.repository';
 import { InMemoryUserRepository } from '@src/user/infrastructure/inmemory-user.repository';
 import { SqlUserRepository } from '@src/user/infrastructure/sql-user.repository';
+import { SharedModule } from '@src/app.container';
 
 describe('User repository', () => {
   let app: INestApplication;
@@ -20,7 +21,11 @@ describe('User repository', () => {
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [TypeOrmModule.forRoot(getTestTypeOrmConfig()), UserModule],
+      imports: [
+        TypeOrmModule.forRoot(getTestTypeOrmConfig()),
+        SharedModule,
+        UserModule,
+      ],
     }).compile();
 
     app = moduleFixture.createNestApplication();
