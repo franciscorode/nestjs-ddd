@@ -1,4 +1,5 @@
 import { ConflictException } from '@nestjs/common';
+
 import { User } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
 

@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsUUID } from 'class-validator';
+
 import { User } from '../domain/user.entity';
 
 export class UserDto {

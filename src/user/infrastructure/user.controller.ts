@@ -1,14 +1,15 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { User } from '../domain/user.entity';
 import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { UserDto } from './user.dto';
+
 import { CreateUserService } from '../application/create-user.service';
 import { GetUsersService } from '../application/get-users.service';
+import { User } from '../domain/user.entity';
+import { UserDto } from './user.dto';
 
 @ApiTags('users')
 @Controller('users')

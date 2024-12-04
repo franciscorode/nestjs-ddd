@@ -1,10 +1,11 @@
 import { Injectable, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
+
 import { InMemoryUserRepository } from './user/infrastructure/inmemory-user.repository';
 import { SqlUserRepository } from './user/infrastructure/sql-user.repository';
-import { InMemoryDomainEventBus } from './user/shared/infrastructure/inmemory-domain-event.bus';
 import { UserModel } from './user/infrastructure/user.model';
+import { InMemoryDomainEventBus } from './user/shared/infrastructure/inmemory-domain-event.bus';
 
 @Injectable()
 export class AppContainer {
